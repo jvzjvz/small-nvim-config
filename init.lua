@@ -7,10 +7,11 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.opt.smoothscroll = true
-vim.opt.wrap = true
+vim.opt.wrap = false
 
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
 
 vim.opt.clipboard = 'unnamedplus'
 
@@ -30,14 +31,25 @@ local color_schemes = {
 	gh('sainnhe/gruvbox-material'),
 	-- gh('/gruvbox'),
 	gh('zenbones-theme/zenbones.nvim'),
+	gh('nvim-lua/plenary.nvim'),
 }
-
 vim.pack.add(color_schemes)
-vim.cmd.colorscheme('koda-moss')
+vim.cmd.colorscheme('cozybox')
 
-vim.pack.add({gh('nvim-tree/nvim-web-devicons')})
+local qol_extensions = {
+	gh('nvim-tree/nvim-web-devicons'),
+	gh('stevearc/oil.nvim'),
+	gh('nvim-lualine/lualine.nvim'),
+	{src = gh('nvim-treesitter/nvim-treesitter'), version = 'main'},
+	gh('nvim-treesitter/nvim-treesitter-context'),
+	gh('sphamba/smear-cursor.nvim'),
+	gh('ej-shafran/compile-mode.nvim'),
+	-- gh('axkirillov/unified.nvim')
+}
+vim.pack.add(qol_extensions)
 
-vim.pack.add({gh('stevearc/oil.nvim')})
+-- require('unified').setup()
+
 require('oil').setup{
 	default_file_explorer = true,
 	view_options = {
@@ -46,13 +58,10 @@ require('oil').setup{
 }
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Oil - Open parent directory' })
 
-vim.pack.add({gh('nvim-lualine/lualine.nvim')})
 require('lualine').setup()
 
-vim.pack.add({gh('sphamba/smear-cursor.nvim')})
 require('smear_cursor').setup()
 
-vim.pack.add({{src = gh('nvim-treesitter/nvim-treesitter'), version = 'main'}})
 local ts = require('nvim-treesitter')
 local ts_parsers = {'c', 'cpp', 'odin'}
 ts.install(ts_parsers)
@@ -66,4 +75,5 @@ vim.api.nvim_create_autocmd('FileType', {
 	end
   end,
 })
-vim.pack.add({gh('nvim-treesitter/nvim-treesitter-context')})
+
+-- require('compile-mode').setup()
