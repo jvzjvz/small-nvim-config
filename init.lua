@@ -8,6 +8,7 @@ vim.opt.relativenumber = true
 
 vim.opt.smoothscroll = true
 vim.opt.wrap = false
+vim.opt.guicursor = "n-v-c:block,i:block"
 
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
@@ -36,11 +37,12 @@ local color_schemes = {
 	gh('Everblush/nvim'),
 	gh('jvzjvz/srcery-vim'),
 	gh('sainnhe/gruvbox-material'),
-	-- gh('/gruvbox'),
 	gh('zenbones-theme/zenbones.nvim'),
 	gh('fenetikm/falcon'),
 	gh('casedami/neomodern.nvim'),
 	gh('dasch/satellite'),
+	gh('sudoscrawl/tokyo-dark.nvim'),
+	gh('itsthomashere/grace.nvim')
 }
 vim.pack.add(color_schemes)
 vim.cmd.colorscheme('cozybox')
