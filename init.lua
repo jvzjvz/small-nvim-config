@@ -9,8 +9,8 @@ vim.opt.cindent = true         -- stronger C-style indentation (optional but use
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
-
-
+vim.opt.autocomplete = true
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 vim.opt.background = 'dark'
 vim.opt.number = true
@@ -150,39 +150,27 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- vim.api.nvim_create_autocmd('LspAttach', {
---     callback = function(args)
---         vim.o.signcolumn = 'yes:1'
---         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
---         if client:supports_method('textDocument/completion') then
---             vim.o.complete = 'o,.,w,b,u'
---             vim.o.completeopt = 'menu,menuone,popup,noinsert'
---             vim.lsp.completion.enable(true, client.id, args.buf)
---         end
---     end
--- })
+-- autocomplete table
+vim.keymap.set('i', '<Tab>', function()
+  if vim.fn.pumvisible() == 1 then
+    return '<C-n>'
+  else
+    return '<Tab>'
+  end
+end, { expr = true })
 
--- lsp
--- vim.lsp.config['ols'] = {
---   cmd = { 'ols' },
---   filetypes = { 'odin' },
--- }
---
--- vim.lsp.enable('ols')
---
--- vim.opt.completeopt = { "menu", "menuone", "popup", "noselect" }
---
--- vim.api.nvim_create_autocmd('LspAttach', {
---   callback = function(ev)
---     local client = vim.lsp.get_client_by_id(ev.data.client_id)
---     if client and client.name == 'ols' then
---       vim.lsp.completion.enable(true, client.id, ev.buf, {
---         autotrigger = true,
---       })
---     end
---   end,
--- })
---
--- vim.keymap.set('i', '<C-Space>', function()
---   vim.lsp.completion.get()
--- end, { desc = 'Trigger LSP completion' })
+vim.keymap.set('i', '<S-Tab>', function()
+  if vim.fn.pumvisible() == 1 then
+    return '<C-p>'
+  else
+    return '<S-Tab>'
+  end
+end, { expr = true })
+
+vim.keymap.set('i', '<CR>', function()
+  if vim.fn.pumvisible() == 1 then
+    return '<C-y>'
+  else
+    return '<CR>'
+  end
+end, { expr = true })
