@@ -78,6 +78,7 @@ local qol_extensions = {
 	gh('ej-shafran/compile-mode.nvim'),
 	gh('nvim-telescope/telescope.nvim'),
 	gh('nvim-telescope/telescope-fzf-native.nvim'),
+	{ src = gh('neovim/nvim-lspconfig')},
 	-- gh('axkirillov/unified.nvim')
 }
 vim.pack.add(qol_extensions)
@@ -149,4 +150,39 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--     callback = function(args)
+--         vim.o.signcolumn = 'yes:1'
+--         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+--         if client:supports_method('textDocument/completion') then
+--             vim.o.complete = 'o,.,w,b,u'
+--             vim.o.completeopt = 'menu,menuone,popup,noinsert'
+--             vim.lsp.completion.enable(true, client.id, args.buf)
+--         end
+--     end
+-- })
 
+-- lsp
+-- vim.lsp.config['ols'] = {
+--   cmd = { 'ols' },
+--   filetypes = { 'odin' },
+-- }
+--
+-- vim.lsp.enable('ols')
+--
+-- vim.opt.completeopt = { "menu", "menuone", "popup", "noselect" }
+--
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   callback = function(ev)
+--     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+--     if client and client.name == 'ols' then
+--       vim.lsp.completion.enable(true, client.id, ev.buf, {
+--         autotrigger = true,
+--       })
+--     end
+--   end,
+-- })
+--
+-- vim.keymap.set('i', '<C-Space>', function()
+--   vim.lsp.completion.get()
+-- end, { desc = 'Trigger LSP completion' })
