@@ -124,7 +124,12 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- center screen when moving up and down (buggy)
+-- vim.keymap.set('n', '<C-d>', '<C-d>zz')
+-- vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
 local map = vim.keymap.set
+
 -- tab & shift tab for buffer switching
 map("n", "<Tab>", ":bnext<CR>", { desc = "Next buffer" })
 map("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
