@@ -1,6 +1,16 @@
-vim.opt.autocomplete = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
+-- vim.opt.autocomplete = true
+-- vim.opt.autoindent = true
+-- vim.opt.smartindent = true
+
+vim.opt.autoindent = true      -- copy indent from previous line
+vim.opt.smartindent = true     -- C-like indentation rules
+vim.opt.cindent = true         -- stronger C-style indentation (optional but useful)
+-- vim.opt.expandtab = true       -- IMPORTANT: spaces instead of tabs
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+
+
 
 vim.opt.background = 'dark'
 vim.opt.number = true
@@ -16,7 +26,7 @@ vim.opt.softtabstop = 2
 
 vim.opt.clipboard = 'unnamedplus'
 
-vim.opt.showmatch = true
+-- vim.opt.showmatch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true
@@ -42,10 +52,20 @@ local color_schemes = {
 	gh('casedami/neomodern.nvim'),
 	gh('dasch/satellite'),
 	gh('sudoscrawl/tokyo-dark.nvim'),
-	gh('itsthomashere/grace.nvim')
+	gh('itsthomashere/grace.nvim'),
+	gh('vv9k/bogster'),
+	gh('mazzettimatteo/Whitney'),
+	gh('jssee/vim-cortado'),
+	gh('NopAngel/nimmy.vim'),
+	gh('glepnir/oceanic-material'),
+	gh('kanenorman/gruvbox-darker.nvim'),
+	gh('Oniup/ignite.nvim'),
+	gh('deparr/tairiki.nvim'),
+	-- gh(''),
+	-- gh(''),
 }
 vim.pack.add(color_schemes)
-vim.cmd.colorscheme('cozybox')
+vim.cmd.colorscheme('gruvbox')
 
 local qol_extensions = {
 	gh('nvim-lua/plenary.nvim'),
