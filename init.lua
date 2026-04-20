@@ -65,7 +65,7 @@ local color_schemes = {
 	-- gh(''),
 }
 vim.pack.add(color_schemes)
-vim.cmd.colorscheme('gruvbox')
+vim.cmd.colorscheme('tokyo-dark')
 
 local qol_extensions = {
 	gh('nvim-lua/plenary.nvim'),
@@ -128,6 +128,7 @@ vim.api.nvim_create_autocmd('FileType', {
 -- vim.keymap.set('n', '<C-d>', '<C-d>zz')
 -- vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
+
 local map = vim.keymap.set
 
 -- tab & shift tab for buffer switching
@@ -140,6 +141,10 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsea
 -- helix goto start / end line
 map("n", "gl", "$", { desc = "Go to end of line" })
 map("n", "gh", "^", { desc = "Go to start of line" })
+
+-- helix line shift
+vim.keymap.set('n', '>', 'V>')
+vim.keymap.set('n', '<', 'V<')
 
 -- window swapping without ctrl w
 map("n", "<leader>ur", "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>", { desc = "Redraw / Clear hlsearch / Diff Update" })
