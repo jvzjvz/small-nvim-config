@@ -1,11 +1,6 @@
--- vim.opt.autocomplete = true
--- vim.opt.autoindent = true
--- vim.opt.smartindent = true
-
-vim.opt.autoindent = true      -- copy indent from previous line
-vim.opt.smartindent = true     -- C-like indentation rules
-vim.opt.cindent = true         -- stronger C-style indentation (optional but useful)
--- vim.opt.expandtab = true       -- IMPORTANT: spaces instead of tabs
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.cindent = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -32,6 +27,9 @@ vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.opt.showmode = false
 vim.opt.confirm = true
+
+vim.g.mapleader = ' '
+vim.g.localleader = ' '
 
 local gh = function(x) return 'https://github.com/' .. x end
 local cb = function(x) return 'https://codeberg.com/' .. x end
@@ -84,16 +82,25 @@ local qol_extensions = {
 vim.pack.add(qol_extensions)
 
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = 'Telescope help tags' })
+vim.keymap.set('n', '<leader>c', builtin.colorscheme, { desc = 'Telescope colorscheme' })
+vim.keymap.set('n', '<leader>c', builtin.colorscheme, { desc = 'Telescope colorscheme' })
+vim.keymap.set('n', '<leader>n', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end)
 
 require('telescope').setup {
 	pickers = {
 		colorscheme = {
-			theme = "dropdown",
+			-- theme = 'dropdown',
 			enable_preview = true
+		},
+		buffers = {
+			theme = 'dropdown'
+		},
+		find_files = {
+			theme = 'dropdown'
 		}
 	}
 }
@@ -139,12 +146,12 @@ map("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
 
 -- helix goto start / end line
-map("n", "gl", "$", { desc = "Go to end of line" })
-map("n", "gh", "^", { desc = "Go to start of line" })
+map({"n", "v"}, "gl", "$", { desc = "Go to end of line" })
+map({"n", "v"}, "gh", "^", { desc = "Go to start of line" })
 
 -- helix line shift
-vim.keymap.set('n', '>', 'V>')
-vim.keymap.set('n', '<', 'V<')
+map('n', '>', 'V>')
+map('n', '<', 'V<')
 
 -- window swapping without ctrl w
 map("n", "<leader>ur", "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>", { desc = "Redraw / Clear hlsearch / Diff Update" })
