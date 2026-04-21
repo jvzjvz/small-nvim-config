@@ -31,34 +31,31 @@ vim.opt.confirm = true
 vim.g.mapleader = ' '
 vim.g.localleader = ' '
 
-local gh = function(x) return 'https://github.com/' .. x end
-local cb = function(x) return 'https://codeberg.com/' .. x end
-
-vim.cmd('packloadall')
-
 local color_schemes = {
-	gh('rktjmp/lush.nvim'), -- common dependency and for custom theme making
-	gh('wtfox/jellybeans.nvim'),
-	gh('harivansh-afk/cozybox.nvim'),
-	gh('oskarnurm/koda.nvim'),
-	gh('neanias/everforest-nvim'),
-	gh('Everblush/nvim'),
-	gh('jvzjvz/srcery-vim'),
-	gh('sainnhe/gruvbox-material'),
-	gh('zenbones-theme/zenbones.nvim'),
-	gh('fenetikm/falcon'),
-	gh('casedami/neomodern.nvim'),
-	gh('dasch/satellite'),
-	gh('sudoscrawl/tokyo-dark.nvim'),
-	gh('itsthomashere/grace.nvim'),
-	gh('vv9k/bogster'),
-	gh('mazzettimatteo/Whitney'),
-	gh('jssee/vim-cortado'),
-	gh('NopAngel/nimmy.vim'),
-	gh('glepnir/oceanic-material'),
-	gh('kanenorman/gruvbox-darker.nvim'),
-	gh('Oniup/ignite.nvim'),
-	gh('deparr/tairiki.nvim'),
+	'https://github.com/rktjmp/lush.nvim', -- common dependency and for custom theme making
+	'https://github.com/wtfox/jellybeans.nvim',
+	'https://github.com/harivansh-afk/cozybox.nvim',
+	'https://github.com/oskarnurm/koda.nvim',
+	'https://github.com/neanias/everforest-nvim',
+	'https://github.com/Everblush/nvim',
+	'https://github.com/jvzjvz/srcery-vim',
+	'https://github.com/sainnhe/gruvbox-material',
+	'https://github.com/zenbones-theme/zenbones.nvim',
+	'https://github.com/fenetikm/falcon',
+	'https://github.com/casedami/neomodern.nvim',
+	'https://github.com/dasch/satellite',
+	'https://github.com/sudoscrawl/tokyo-dark.nvim',
+	'https://github.com/itsthomashere/grace.nvim',
+	'https://github.com/vv9k/bogster',
+	'https://github.com/mazzettimatteo/Whitney',
+	'https://github.com/jssee/vim-cortado',
+	'https://github.com/NopAngel/nimmy.vim',
+	'https://github.com/glepnir/oceanic-material',
+	'https://github.com/kanenorman/gruvbox-darker.nvim',
+	'https://github.com/Oniup/ignite.nvim',
+	'https://github.com/deparr/tairiki.nvim',
+	'https://github.com/datsfilipe/gruvbox.nvim',
+	'https://github.com/IlyasYOY/theme.nvim',
 	-- gh(''),
 	-- gh(''),
 }
@@ -66,17 +63,17 @@ vim.pack.add(color_schemes)
 vim.cmd.colorscheme('tokyo-dark')
 
 local qol_extensions = {
-	gh('nvim-lua/plenary.nvim'),
-	gh('nvim-tree/nvim-web-devicons'),
-	gh('stevearc/oil.nvim'),
-	gh('nvim-lualine/lualine.nvim'),
-	{src = gh('nvim-treesitter/nvim-treesitter'), version = 'main'},
-	gh('nvim-treesitter/nvim-treesitter-context'),
-	gh('sphamba/smear-cursor.nvim'),
-	gh('ej-shafran/compile-mode.nvim'),
-	gh('nvim-telescope/telescope.nvim'),
-	gh('nvim-telescope/telescope-fzf-native.nvim'),
-	{ src = gh('neovim/nvim-lspconfig')},
+	'https://github.com/nvim-lua/plenary.nvim',
+	'https://github.com/nvim-tree/nvim-web-devicons',
+	'https://github.com/stevearc/oil.nvim',
+	'https://github.com/nvim-lualine/lualine.nvim',
+	'https://github.com/nvim-treesitter/nvim-treesitter-context',
+	'https://github.com/sphamba/smear-cursor.nvim',
+	'https://github.com/ej-shafran/compile-mode.nvim',
+	'https://github.com/nvim-telescope/telescope.nvim',
+	'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
+	{src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main'},
+	{ src = 'https://github.com/neovim/nvim-lspconfig'},
 	-- gh('axkirillov/unified.nvim')
 }
 vim.pack.add(qol_extensions)
