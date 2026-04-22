@@ -90,7 +90,7 @@ vim.keymap.set('n', '<leader>n', function() builtin.find_files { cwd = vim.fn.st
 require('telescope').setup {
 	pickers = {
 		colorscheme = {
-			-- theme = 'dropdown',
+			theme = 'dropdown',
 			enable_preview = true
 		},
 		buffers = {
