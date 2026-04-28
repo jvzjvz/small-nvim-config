@@ -32,6 +32,8 @@ vim.g.mapleader = ' '
 vim.g.localleader = ' '
 
 local color_schemes = {
+	'https://github.com/Shatur/neovim-ayu',
+	'https://github.com/jvzjvz/autumn_night.nvim',
 	'https://github.com/rktjmp/lush.nvim', -- common dependency and for custom theme making
 	'https://github.com/wtfox/jellybeans.nvim',
 	'https://github.com/harivansh-afk/cozybox.nvim',
@@ -56,11 +58,12 @@ local color_schemes = {
 	'https://github.com/deparr/tairiki.nvim',
 	'https://github.com/datsfilipe/gruvbox.nvim',
 	'https://github.com/IlyasYOY/theme.nvim',
+	'https://github.com/metalelf0/kintsugi-nvim'
 	-- gh(''),
 	-- gh(''),
 }
 vim.pack.add(color_schemes)
-vim.cmd.colorscheme('tokyo-dark')
+vim.cmd.colorscheme('kintsugi-flared')
 
 local qol_extensions = {
 	'https://github.com/nvim-lua/plenary.nvim',
@@ -73,7 +76,8 @@ local qol_extensions = {
 	'https://github.com/nvim-telescope/telescope.nvim',
 	'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
 	{src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main'},
-	{ src = 'https://github.com/neovim/nvim-lspconfig'},
+	-- { src = 'https://github.com/neovim/nvim-lspconfig'},
+	-- 'https://github.com/mason-org/mason.nvim'
 	-- gh('axkirillov/unified.nvim')
 }
 vim.pack.add(qol_extensions)
@@ -85,6 +89,8 @@ vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' }
 vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>c', builtin.colorscheme, { desc = 'Telescope colorscheme' })
 vim.keymap.set('n', '<leader>c', builtin.colorscheme, { desc = 'Telescope colorscheme' })
+vim.keymap.set('n', '<leader>S', builtin.tags, { desc = 'Telescope all tags' })
+vim.keymap.set('n', '<leader>s', builtin.current_buffer_tags, { desc = 'Telescope buffer tags' })
 vim.keymap.set('n', '<leader>n', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end)
 
 require('telescope').setup {
@@ -122,16 +128,24 @@ vim.api.nvim_create_autocmd('FileType', {
 	local filetype = args.match
 	local lang = vim.treesitter.language.get_lang(filetype)
 	if vim.treesitter.language.add(lang) then
-	  vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+	  -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 	  vim.treesitter.start()
 	end
   end,
 })
 
+-- require('mason').setup {
+-- }
+--
+-- vim.lsp.config("clangd", {
+--   cmd = { "clangd", "--compile-commands-dir=build" },
+-- })
+
+-- vim.lsp.enable({'clangd', 'ols', 'lua_ls', 'gopls', 'zls'})
+
 -- center screen when moving up and down (buggy)
 -- vim.keymap.set('n', '<C-d>', '<C-d>zz')
 -- vim.keymap.set('n', '<C-u>', '<C-u>zz')
-
 
 local map = vim.keymap.set
 
