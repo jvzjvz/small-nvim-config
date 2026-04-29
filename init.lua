@@ -1,3 +1,4 @@
+vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.cindent = true
@@ -121,7 +122,7 @@ require('lualine').setup()
 require('smear_cursor').setup()
 
 local ts = require('nvim-treesitter')
-local ts_parsers = {'c', 'cpp', 'odin'}
+local ts_parsers = {'c', 'cpp', 'odin', 'nim'}
 ts.install(ts_parsers)
 vim.api.nvim_create_autocmd('FileType', {
   callback = function(args)
