@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
 vim.g.localleader = ' '
-vim.opt.timeoutlen = 250
+vim.opt.timeoutlen = 300
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.opt.expandtab = true
@@ -10,12 +10,14 @@ vim.opt.cindent = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
+vim.opt.winborder = "rounded"
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 vim.opt.background = 'dark'
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.signcolumn = 'yes'
 
 vim.opt.smoothscroll = true
 vim.opt.wrap = false
@@ -31,9 +33,9 @@ vim.opt.showmode = false
 vim.opt.confirm = true
 
 local color_schemes = {
+  'https://github.com/rktjmp/lush.nvim', -- common dependency and for custom theme making
   'https://github.com/Shatur/neovim-ayu',
   'https://github.com/jvzjvz/autumn_night.nvim',
-  'https://github.com/rktjmp/lush.nvim', -- common dependency and for custom theme making
   'https://github.com/wtfox/jellybeans.nvim',
   'https://github.com/harivansh-afk/cozybox.nvim',
   'https://github.com/oskarnurm/koda.nvim',
@@ -64,6 +66,18 @@ local color_schemes = {
 vim.pack.add(color_schemes)
 
 vim.g.gruvbox_material_background = 'hard'
+vim.g.gruvbox_material_float_style = 'dim'
+vim.g.gruvbox_material_colors_override = {
+    bg0 = { '#111111', '234' },
+
+    bg1 = { '#161616', '235' },
+    bg2 = { '#1c1c1c', '236' },
+    bg3 = { '#222222', '237' },
+
+    -- bg_statusline1 = { '#161616', '235' },
+    -- bg_statusline2 = { '#1c1c1c', '236' },
+    -- bg_statusline3 = { '#222222', '237' },
+  }
 vim.cmd.colorscheme('gruvbox-material')
 
 local qol_extensions = {
@@ -90,16 +104,27 @@ local qol_extensions = {
 }
 vim.pack.add(qol_extensions)
 
+vim.diagnostic.config({
+  float = { border = "rounded" },
+  virtual_text = {
+    spacing = 4,
+    prefix = "●",
+  },
+})
+
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 -- Telescope
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = 'Telescope help tags' })
-vim.keymap.set('n', '<leader>c', builtin.colorscheme, { desc = 'Telescope colorscheme' })
-vim.keymap.set('n', '<leader>S', builtin.tags, { desc = 'Telescope all tags' })
-vim.keymap.set('n', '<leader>s', builtin.current_buffer_tags, { desc = 'Telescope buffer tags' })
-vim.keymap.set('n', '<leader>n', function()
+  vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope find files' })
+  vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = 'Telescope live grep' })
+  vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
+  vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = 'Telescope help tags' })
+  vim.keymap.set('n', '<leader>c', builtin.colorscheme, { desc = 'Telescope colorscheme' })
+  vim.keymap.set('n', '<leader>S', builtin.tags, { desc = 'Telescope all tags' })
+  vim.keymap.set('n', '<leader>s', builtin.current_buffer_tags, { desc = 'Telescope buffer tags' })
+  vim.keymap.set('n', '<leader>n', function()
   builtin.find_files { cwd = vim.fn.stdpath('config') }
 end, { desc = 'Find Neovim config files' })
 
@@ -194,25 +219,20 @@ vim.lsp.config('lua_ls', {
   },
 })
 
-vim.lsp.config('ols', {
-  capabilities = capabilities,
-})
-
-vim.lsp.config('gopls', {
-  capabilities = capabilities,
-})
-
-vim.lsp.config('zls', {
-  capabilities = capabilities,
-})
-
-vim.lsp.enable({
+local installed_lsps = {
   'clangd',
   'lua_ls',
   'ols',
   'gopls',
   'zls',
-})
+}
+
+for _, lsp in ipairs(installed_lsps) do
+  vim.lsp.config(lsp, {
+    capabilities = capabilities
+  })
+end
+vim.lsp.enable(installed_lsps)
 
 -- LSP keymaps attach only when an LSP starts for the buffer
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -246,6 +266,10 @@ map({ 'n', 'v' }, 'gh', '^', { desc = 'Go to start of line' })
 -- helix line shift
 map('n', '>', 'V>')
 map('n', '<', 'V<')
+
+-- persistent visual selection after indentation
+map('v', '>', '>gv')
+map('v', '<', '<gv')
 
 -- window swapping without ctrl w
 map('n', '<leader>ur', '<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>', { desc = 'Redraw / Clear hlsearch / Diff Update' })
