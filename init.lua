@@ -70,7 +70,7 @@ vim.g.gruvbox_material_colors_override = {
 
     bg_visual = { '#3a3a3a', '239' },
   }
-vim.cmd.colorscheme('gruvbox-material')
+vim.cmd.colorscheme('parchment')
 
 local qol_extensions = {
   'https://github.com/nvim-lua/plenary.nvim',
