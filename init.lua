@@ -62,22 +62,12 @@ vim.pack.add(color_schemes)
 vim.g.gruvbox_material_background = 'hard'
 vim.g.gruvbox_material_float_style = 'dim'
 vim.g.gruvbox_material_colors_override = {
-    -- bg0 = { '#111111', '234' },
-    --
-    -- bg1 = { '#161616', '235' },
-    -- bg2 = { '#1c1c1c', '236' },
-    -- bg3 = { '#222222', '237' },
-
-    -- bg_statusline1 = { '#161616', '235' },
-    -- bg_statusline2 = { '#1c1c1c', '236' },
-    -- bg_statusline3 = { '#222222', '237' },
     bg0 = { '#111111', '234' },
 
     bg1 = { '#1d1d1d', '235' },
     bg2 = { '#262626', '236' },
     bg3 = { '#303030', '237' },
 
-    -- optional:
     bg_visual = { '#3a3a3a', '239' },
   }
 vim.cmd.colorscheme('gruvbox-material')
@@ -101,6 +91,7 @@ local qol_extensions = {
   'https://github.com/hrsh7th/cmp-path',
   'https://github.com/chentoast/marks.nvim',
   'https://github.com/windwp/nvim-autopairs',
+  'https://github.com/kylechui/nvim-surround',
 }
 vim.pack.add(qol_extensions)
 
@@ -166,7 +157,12 @@ require('oil').setup {
     show_hidden = true,
   },
 }
-vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Oil - Open parent directory' })
+-- vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Oil - Open parent directory' })
+vim.keymap.set('n', '-', function()
+  require('oil').open_float()
+end, {
+  desc = 'Oil float'
+})
 
 
 require('nvim-autopairs').setup {}
