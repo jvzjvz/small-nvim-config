@@ -1,14 +1,17 @@
 if vim.g.neovide == true then
-  vim.o.guifont = 'JetBrainsMono Nerd Font Mono :h16'
-  -- vim.o.guifont = 'LythMono Nerd Font :h16:b'
-  -- vim.o.guifont = 'FiraCode Nerd Font :h16'
-  -- vim.o.guifont = 'Hack Nerd Font Mono :h16'
+  vim.o.guifont = 'JetBrainsMono Nerd Font Mono:h12'
+  -- vim.o.guifont = 'LythMono Nerd Font:h16:b'
+  -- vim.o.guifont = 'FiraCode Nerd Font:h16'
+  -- vim.o.guifont = 'Hack Nerd Font Mono:h16'
   vim.api.nvim_set_keymap("n", "<C-=>", ":lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1,  1.0)<CR>", { silent = true })
   vim.api.nvim_set_keymap("n", "<C-->", ":lua vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.1,  0.1)<CR>", { silent = true })
   vim.api.nvim_set_keymap("n", "<C-+>", ":lua vim.g.neovide_transparency = math.min(vim.g.neovide_transparency + 0.05, 1.0)<CR>", { silent = true })
   vim.api.nvim_set_keymap("n", "<C-_>", ":lua vim.g.neovide_transparency = math.max(vim.g.neovide_transparency - 0.05, 0.0)<CR>", { silent = true })
   vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = 0.5<CR>", { silent = true })
   vim.api.nvim_set_keymap("n", "<C-)>", ":lua vim.g.neovide_transparency = 0.9<CR>", { silent = true })
+  else
+  vim.pack.add({'https://github.com/sphamba/smear-cursor.nvim'})
+  require('smear_cursor').setup()
 end
 
 vim.g.mapleader = ' '
@@ -47,7 +50,7 @@ vim.opt.incsearch = true
 vim.opt.showmode = false
 vim.opt.confirm = true
 
-local color_schemes = {
+local colorschemes = {
   'https://github.com/rktjmp/lush.nvim', -- common dependency and for custom theme making
   'https://github.com/jvzjvz/autumn_night.nvim',
   'https://github.com/jvzjvz/srcery-vim',
@@ -70,8 +73,9 @@ local color_schemes = {
   'https://github.com/saeeedhany/parchment.nvim',
   'https://github.com/m-gail/northernlights.vim',
   'https://github.com/aidyak/hitotose.nvim',
+  'https://github.com/darianmorat/gruvdark.nvim',
 }
-vim.pack.add(color_schemes)
+vim.pack.add(colorschemes)
 
 vim.g.gruvbox_material_background = 'hard'
 vim.g.gruvbox_material_float_style = 'dim'
@@ -92,7 +96,6 @@ local qol_extensions = {
   'https://github.com/stevearc/oil.nvim',
   'https://github.com/nvim-lualine/lualine.nvim',
   'https://github.com/nvim-treesitter/nvim-treesitter-context',
-  'https://github.com/sphamba/smear-cursor.nvim',
   'https://github.com/ej-shafran/compile-mode.nvim',
   'https://github.com/nvim-telescope/telescope.nvim',
   'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
@@ -181,7 +184,6 @@ require('marks').setup {}
 
 require('lualine').setup()
 
-require('smear_cursor').setup()
 
 -- Treesitter
 local ts = require('nvim-treesitter')
