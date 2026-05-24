@@ -105,7 +105,25 @@ local colorschemes = {
   'https://github.com/mrpbennett/vault',
 }
 vim.pack.add(colorschemes)
-vim.cmd.colorscheme('binary')
+vim.cmd.colorscheme('parchment')
+
+-- require('parchment').setup {
+--   styles = {
+--     Normal = { bg = '#000000' }
+--   }
+-- }
+
+vim.api.nvim_set_hl(0, 'Normal', {
+  bg = '#000000'
+})
+
+vim.api.nvim_set_hl(0, 'NormalNC', {
+  bg = '#0a0a0a'
+})
+
+vim.api.nvim_set_hl(0, 'NormalFloat', {
+  bg = '#000000'
+})
 
 vim.g.gruvbox_material_background = 'hard'
 vim.g.gruvbox_material_float_style = 'dim'
