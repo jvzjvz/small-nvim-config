@@ -3,7 +3,7 @@ if vim.g.neovide == true then
   -- vim.o.guifont = 'LythMono Nerd Font:h16:b'
   -- vim.o.guifont = 'Agave Nerd Font Mono:h16'
   -- vim.o.guifont = 'FiraCode Nerd Font:h16'
-  vim.o.guifont = 'Hack Nerd Font Mono:h15'
+  vim.o.guifont = 'Hack Nerd Font Mono:h10'
   vim.api.nvim_set_keymap("n", "<C-=>", ":lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1,  1.0)<CR>", { silent = true })
   vim.api.nvim_set_keymap("n", "<C-->", ":lua vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.1,  0.1)<CR>", { silent = true })
   vim.api.nvim_set_keymap("n", "<C-+>", ":lua vim.g.neovide_transparency = math.min(vim.g.neovide_transparency + 0.05, 1.0)<CR>", { silent = true })
@@ -130,6 +130,7 @@ local qol_extensions = {
   'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
   'https://github.com/windwp/nvim-autopairs',
+  'https://github.com/lukas-reineke/indent-blankline.nvim',
 }
 vim.pack.add(qol_extensions)
 
@@ -140,6 +141,10 @@ vim.pack.add(qol_extensions)
 --     prefix = "●",
 --   },
 -- })
+
+require('ibl').setup {
+  indent = { char = '▏' }
+}
 
 vim.g.compile_mode = {
   default_command = {
