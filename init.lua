@@ -61,11 +61,11 @@ vim.opt.background = 'dark'
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
+vim.opt.cursorline = false
+vim.opt.guicursor = "n-v-c:block,i:block"
 
 vim.opt.smoothscroll = true
 vim.opt.wrap = false
-vim.opt.cursorline = false
-vim.opt.guicursor = "n-v-c:block,i:block"
 
 vim.opt.clipboard = 'unnamedplus'
 
