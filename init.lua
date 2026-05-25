@@ -103,9 +103,11 @@ local colorschemes = {
   'https://github.com/hendriknielaender/stardust.nvim',
   'https://github.com/amedoeyes/eyes.nvim',
   'https://github.com/mrpbennett/vault',
+  'https://github.com/phha/zenburn.nvim',
+  'https://github.com/StradNikw/Naysayer.nvim',
 }
 vim.pack.add(colorschemes)
-vim.cmd.colorscheme('parchment')
+vim.cmd.colorscheme('srcery')
 
 -- require('parchment').setup {
 --   styles = {
@@ -113,17 +115,17 @@ vim.cmd.colorscheme('parchment')
 --   }
 -- }
 
-vim.api.nvim_set_hl(0, 'Normal', {
-  bg = '#000000'
-})
-
-vim.api.nvim_set_hl(0, 'NormalNC', {
-  bg = '#0a0a0a'
-})
-
-vim.api.nvim_set_hl(0, 'NormalFloat', {
-  bg = '#000000'
-})
+-- vim.api.nvim_set_hl(0, 'Normal', {
+--   bg = '#000000'
+-- })
+--
+-- vim.api.nvim_set_hl(0, 'NormalNC', {
+--   bg = '#0a0a0a'
+-- })
+--
+-- vim.api.nvim_set_hl(0, 'NormalFloat', {
+--   bg = '#000000'
+-- })
 
 vim.g.gruvbox_material_background = 'hard'
 vim.g.gruvbox_material_float_style = 'dim'
@@ -145,19 +147,19 @@ local qol_extensions = {
   'https://github.com/nvim-telescope/telescope.nvim',
   'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
-  'https://github.com/chentoast/marks.nvim',
+  -- 'https://github.com/chentoast/marks.nvim',
   'https://github.com/windwp/nvim-autopairs',
-  'https://github.com/kylechui/nvim-surround',
+  -- 'https://github.com/kylechui/nvim-surround',
 }
 vim.pack.add(qol_extensions)
 
-vim.diagnostic.config({
-  float = { border = "rounded" },
-  virtual_text = {
-    spacing = 4,
-    prefix = "●",
-  },
-})
+-- vim.diagnostic.config({
+--   float = { border = "rounded" },
+--   virtual_text = {
+--     spacing = 4,
+--     prefix = "●",
+--   },
+-- })
 
 vim.g.compile_mode = {
   default_command = {
@@ -226,7 +228,7 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Oil - Open parent directory' 
 
 require('nvim-autopairs').setup {}
 
-require('marks').setup {}
+-- require('marks').setup {}
 
 require('lualine').setup()
 
