@@ -109,24 +109,6 @@ local colorschemes = {
 vim.pack.add(colorschemes)
 vim.cmd.colorscheme('srcery')
 
--- require('parchment').setup {
---   styles = {
---     Normal = { bg = '#000000' }
---   }
--- }
-
--- vim.api.nvim_set_hl(0, 'Normal', {
---   bg = '#000000'
--- })
---
--- vim.api.nvim_set_hl(0, 'NormalNC', {
---   bg = '#0a0a0a'
--- })
---
--- vim.api.nvim_set_hl(0, 'NormalFloat', {
---   bg = '#000000'
--- })
-
 vim.g.gruvbox_material_background = 'hard'
 vim.g.gruvbox_material_float_style = 'dim'
 vim.g.gruvbox_material_colors_override = {
@@ -147,9 +129,7 @@ local qol_extensions = {
   'https://github.com/nvim-telescope/telescope.nvim',
   'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
-  -- 'https://github.com/chentoast/marks.nvim',
   'https://github.com/windwp/nvim-autopairs',
-  -- 'https://github.com/kylechui/nvim-surround',
 }
 vim.pack.add(qol_extensions)
 
