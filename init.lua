@@ -131,8 +131,7 @@ local qol_extensions = {
   'https://github.com/windwp/nvim-autopairs',
   'https://github.com/lukas-reineke/indent-blankline.nvim',
   'https://github.com/folke/which-key.nvim',
-  -- 'https://github.com/wsdjeg/ctags.nvim',
-  -- 'https://github.com/wsdjeg/job.nvim',
+  'https://github.com/xiyaowong/transparent.nvim',
 }
 vim.pack.add(qol_extensions)
 
