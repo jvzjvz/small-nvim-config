@@ -59,14 +59,13 @@ local colorschemes = {
   'https://github.com/wtfox/jellybeans.nvim',
   'https://github.com/harivansh-afk/cozybox.nvim',
   'https://github.com/neanias/everforest-nvim',
-  {src = 'https://github.com/Everblush/nvim', name = 'everblush-main'},
+  -- {src = 'https://github.com/Everblush/nvim', name = 'everblush-main'},
   'https://github.com/sainnhe/gruvbox-material',
   'https://github.com/zenbones-theme/zenbones.nvim',
   'https://github.com/Oniup/ignite.nvim',
   'https://github.com/deparr/tairiki.nvim',
   'https://github.com/metalelf0/kintsugi-nvim',
   'https://github.com/saeeedhany/parchment.nvim',
-  'https://github.com/funnyVariable/blank.nvim',
   'https://github.com/jackplus-xyz/binary.nvim',
   'https://github.com/drewxs/ash.nvim',
   'https://github.com/amedoeyes/eyes.nvim',
@@ -74,17 +73,40 @@ local colorschemes = {
   'https://github.com/phha/zenburn.nvim',
   'https://github.com/cappyzawa/akari-nvim',
   'https://github.com/dybdeskarphet/gruvbox-minimal.nvim',
-  'https://github.com/Aejkatappaja/sora',
   'https://github.com/AlexvZyl/nordic.nvim',
   'https://github.com/Sly-Harvey/radium.nvim',
   'https://github.com/xeind/nightingale.nvim',
   'https://github.com/Mofiqul/vscode.nvim',
   'https://github.com/Love-Pengy/lillilac.nvim',
   'https://github.com/EdenEast/nightfox.nvim',
-  -- 'https://github.com/black-atom-industries/nvim',
-  -- 'https://github.com/szymonwilczek/arete.nvim',
-  -- 'https://github.com/Shatur/neovim-ayu',
-  -- 'https://github.com/oskarnurm/koda.nvim',
+  'https://github.com/marekh19/meowsoot.nvim',
+  'https://github.com/kotsuban/nekomi.nvim',
+  'https://github.com/wjlroe/brutalist.vim',
+  'https://github.com/danishprakash/vim-yami',
+  'https://github.com/rjmacarthy/oscura-vscode.nvim',
+  'https://github.com/ATTron/bebop.nvim',
+  'https://github.com/mnabila/ayune.nvim',
+  'https://github.com/bergholmm/cursor-dark.nvim',
+  'https://github.com/m-mead/eddy.nvim',
+  'https://github.com/ankushbhagats/pastel.nvim',
+  -- 'https://github.com/matveyt/vim-modest',
+  -- 'https://github.com/yonatanperel/lake-dweller.nvim',
+  -- 'https://github.com/felipeagc/fleet-theme-nvim',
+  -- 'https://github.com/idr4n/github-monochrome.nvim',
+  -- 'https://github.com/mikesmithgh/gruvsquirrel.nvim',
+  -- 'https://github.com/razcoen/fleet.nvim',
+  -- 'https://github.com/smallwat3r/vim-simplicity',
+  -- 'https://github.com/backdround/melting',
+  -- 'https://github.com/lighthaus-theme/vim-lighthaus',
+  -- 'https://github.com/igorepst/hemisu.nvim',
+  -- 'https://github.com/lfenzo/fusion.nvim',
+  -- 'https://github.com/taDachs/kit.vim',
+  -- 'https://github.com/kooparse/vim-color-desert-night',
+  -- 'https://github.com/niuez/testify.vim',
+  -- 'https://github.com/Dich0tomy/oxocarbon-lua.nvim',
+  -- 'https://github.com/kanenorman/gruvbox-darker.nvim',
+  -- 'https://github.com/chama-chomo/grail',
+
   -- 'https://github.com/metalelf0/black-metal-theme-neovim',
   -- 'https://github.com/sudoscrawl/tokyo-dark.nvim',
   -- 'https://github.com/itsthomashere/grace.nvim',
@@ -93,6 +115,32 @@ local colorschemes = {
 }
 
 vim.pack.add(colorschemes)
+
+local nekomi = require('nekomi')
+
+nekomi.setup {
+  accent = nekomi.colors.blue,
+  -- colors = {
+  --   base = '#000000',
+    -- mantle = '#000000'
+  -- }
+
+  highlight = function(self)
+    return {
+      Normal = { bg = '#000000' },
+    }
+  end
+}
+
+require('binary').setup {
+  colors = {
+    bg = "#ffb400",
+  }
+}
+
+require('bebop').setup {
+  preset = 'faye'
+}
 
 require('gruvbox-minimal').setup {
   -- contrast = 'high',
