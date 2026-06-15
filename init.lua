@@ -93,7 +93,7 @@ local colorschemes = {
   -- 'https://github.com/yonatanperel/lake-dweller.nvim',
   -- 'https://github.com/felipeagc/fleet-theme-nvim',
   -- 'https://github.com/idr4n/github-monochrome.nvim',
-  -- 'https://github.com/mikesmithgh/gruvsquirrel.nvim',
+  'https://github.com/mikesmithgh/gruvsquirrel.nvim',
   -- 'https://github.com/razcoen/fleet.nvim',
   -- 'https://github.com/smallwat3r/vim-simplicity',
   -- 'https://github.com/backdround/melting',
@@ -133,9 +133,9 @@ nekomi.setup {
 }
 
 require('binary').setup {
-  colors = {
-    bg = "#ffb400",
-  }
+  -- colors = {
+  --   bg = "#ffb400",
+  -- }
 }
 
 require('bebop').setup {
