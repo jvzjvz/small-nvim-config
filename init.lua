@@ -84,7 +84,7 @@ local colorschemes = {
   'https://github.com/danishprakash/vim-yami',
   'https://github.com/ATTron/bebop.nvim',
   'https://github.com/mnabila/ayune.nvim',
-  'https://github.com/razcoen/fleet.nvim',
+  'https://github.com/felipeagc/fleet-theme-nvim',
   'https://github.com/ankushbhagats/pastel.nvim',
   'https://github.com/catppuccin/nvim',
   'https://github.com/rebelot/kanagawa.nvim',
@@ -203,7 +203,13 @@ vim.g.gruvbox_material_colors_override = {
     bg_visual = { '#3a3a3a', '239' },
 }
 
-vim.cmd.colorscheme('kanagawa')
+require('nordic').setup {
+  on_palette = function (palette)
+    palette.gray0 = '#111111'
+  end
+}
+
+vim.cmd.colorscheme('nordic')
 
 local qol_extensions = {
   'https://github.com/nvim-lua/plenary.nvim',
