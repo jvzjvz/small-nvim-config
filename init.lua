@@ -86,12 +86,12 @@ local colorschemes = {
   'https://github.com/mnabila/ayune.nvim',
   'https://github.com/razcoen/fleet.nvim',
   'https://github.com/ankushbhagats/pastel.nvim',
-  'https://github.com/jacoborus/tender.vim',
   'https://github.com/catppuccin/nvim',
   'https://github.com/rebelot/kanagawa.nvim',
-  'https://github.com/sefidel/avalanche.nvim',
+  'https://github.com/navarasu/onedark.nvim',
+  'https://github.com/drewtempelmeyer/palenight.vim',
+  'https://github.com/Shatur/neovim-ayu',
   -- 'https://github.com/Dich0tomy/oxocarbon-lua.nvim',
-  -- 'https://github.com/kanenorman/gruvbox-darker.nvim',
   -- 'https://github.com/chama-chomo/grail',
 
   -- 'https://github.com/metalelf0/black-metal-theme-neovim',
@@ -101,6 +101,19 @@ local colorschemes = {
 }
 
 vim.pack.add(colorschemes)
+
+vim.g.gruvbox_termcolors = 16
+
+require('onedark').setup {
+  style = 'darker',
+  highlights = {
+    Normal = { bg = '#000000'},
+    -- bg1 = '#000000',
+    -- bg2 = '#000000',
+    -- bg3 = '#000000',
+    -- bg4 = '#000000',
+  }
+}
 
 require('kanagawa').setup {
   colors = {
@@ -191,7 +204,7 @@ vim.g.gruvbox_material_colors_override = {
     bg_visual = { '#3a3a3a', '239' },
 }
 
-vim.cmd.colorscheme('everforest')
+vim.cmd.colorscheme('onedark')
 
 local qol_extensions = {
   'https://github.com/nvim-lua/plenary.nvim',
@@ -370,8 +383,11 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Oil - Open parent directory' 
 
 -- require('marks').setup {}
 
-require('lualine').setup()
-
+require('lualine').setup {
+  -- sections = {
+  --
+  -- }
+}
 
 -- Treesitter
 local ts = require('nvim-treesitter')
@@ -387,6 +403,25 @@ vim.api.nvim_create_autocmd('FileType', {
       -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
       vim.treesitter.start()
     end
+  end,
+})
+
+vim.api.nvim_create_user_command("TSHighlight", function(opts)
+  local buf = vim.api.nvim_get_current_buf()
+
+  if opts.args == "on" then
+    vim.treesitter.start(buf)
+    print("Treesitter highlighting enabled")
+  elseif opts.args == "off" then
+    vim.treesitter.stop(buf)
+    print("Treesitter highlighting disabled")
+  else
+    print("Usage: :TSHighlight [on|off]")
+  end
+end, {
+  nargs = 1,
+  complete = function()
+    return { "on", "off" }
   end,
 })
 
