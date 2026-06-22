@@ -54,6 +54,12 @@ vim.opt.signcolumn = 'no'
 
 local colorschemes = {
   'https://github.com/rktjmp/lush.nvim', -- common dependency and for custom theme making
+  {
+    src = 'https://github.com/jvzjvz/gild.nvim',
+    dependencies = {
+      'https://github.com/rktjmp/lush.nvim',
+    }
+  },
   'https://github.com/jvzjvz/autumn_night.nvim',
   'https://github.com/jvzjvz/srcery-vim',
   'https://github.com/wtfox/jellybeans.nvim',
@@ -209,7 +215,7 @@ require('nordic').setup {
   end
 }
 
-vim.cmd.colorscheme('nordic')
+vim.cmd.colorscheme('zenwritten')
 
 local qol_extensions = {
   'https://github.com/nvim-lua/plenary.nvim',
@@ -318,8 +324,10 @@ local builtin = require('telescope.builtin')
   vim.keymap.set('n', '<leader><Space>', builtin.buffers, { desc = 'Telescope buffers' })
   vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = 'Telescope help tags' })
   vim.keymap.set('n', '<leader>c', builtin.colorscheme, { desc = 'Telescope colorscheme' })
-  vim.keymap.set('n', '<leader>S', builtin.tags, { desc = 'Telescope all tags' })
-  vim.keymap.set('n', '<leader>s', builtin.current_buffer_tags, { desc = 'Telescope buffer tags' })
+  vim.keymap.set('n', '<leader>s', builtin.lsp_document_symbols, { desc = 'Telescope Current Buffer Symbols' })
+  vim.keymap.set('n', '<leader>d', builtin.diagnostics, { desc = 'Telescope Diagnostics' })
+  -- vim.keymap.set('n', '<leader>S', builtin.tags, { desc = 'Telescope all tags' })
+  -- vim.keymap.set('n', '<leader>s', builtin.current_buffer_tags, { desc = 'Telescope buffer tags' })
   vim.keymap.set('n', '<leader>m', builtin.marks, { desc ='Telescope marks'})
   vim.keymap.set('n', '<leader>n', function()
   builtin.find_files { cwd = vim.fn.stdpath('config') } -- TODO: change to just open the config file, no need for telescope picker

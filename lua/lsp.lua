@@ -209,7 +209,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
     local opts = { buffer = event.buf }
 
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover,
+    vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover,
       vim.tbl_extend('force', opts, { desc = 'LSP hover' }))
 
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
@@ -230,7 +230,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action,
       vim.tbl_extend('force', opts, { desc = 'Code action' }))
 
-    vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float,
+    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float,
       vim.tbl_extend('force', opts, { desc = 'Line diagnostics' }))
   end,
 })
