@@ -201,8 +201,8 @@ require('akari').setup {
 vim.g.gruvbox_material_background = 'hard'
 vim.g.gruvbox_material_float_style = 'dim'
 vim.g.gruvbox_material_colors_override = {
-    bg0 = { '#000000', '234' },
-    -- bg0 = { '#111111', '234' },
+    -- bg0 = { '#000000', '234' },
+    bg0 = { '#111111', '234' },
     bg1 = { '#1d1d1d', '235' },
     bg2 = { '#262626', '236' },
     bg3 = { '#303030', '237' },
