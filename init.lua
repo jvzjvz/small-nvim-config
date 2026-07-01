@@ -97,6 +97,7 @@ local colorschemes = {
   'https://github.com/navarasu/onedark.nvim',
   'https://github.com/drewtempelmeyer/palenight.vim',
   'https://github.com/Shatur/neovim-ayu',
+  'https://github.com/vossenwout/guts.nvim',
   -- 'https://github.com/Dich0tomy/oxocarbon-lua.nvim',
   -- 'https://github.com/chama-chomo/grail',
 
